@@ -34,11 +34,11 @@ ${data.contributing}
 
 ## Tests
 
-${data.tests}
+${data.test}
 
 ## Questions
 
-GitHub Profile: [${data.githubUsername}](https://github.com/${data.githubUsername})
+GitHub Profile: [${data.github}](https://github.com/${data.github})
 
 For additional questions, contact me at: ${data.email}
 `;
