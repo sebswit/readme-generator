@@ -58,21 +58,26 @@ function writeToFile(fileName, data) {
     const outputPath = path.join(process.cwd(), fileName);
 
     fs.writeFile(outputPath, data, (err) => {
-        if (err) throw err;
-        console.log('The file has been saved!');
+        if (err) {
+            console.error('Error writing file', err);
+        } else {
+            console.log('Readme has been successfully generated!');
+        }
     });
 }
 
 // function to initialize program
-function init() {
-    try{
- const answers = inquirer.prompt(questions);
- const markdown = generateMarkdown(answers);
-    writeToFile('README.md', markdown);
-    } catch(err) {
-        console.log(err);
+async function init() {
+    try {
+      const answers = await inquirer.prompt(questions);
+  
+      const readmeContent = generateMarkdown(answers);
+  
+      writeToFile('README.md', readmeContent);
+    } catch (error) {
+      console.error('Error initializing program:', error);
     }
-};
+  }
 
 // function call to initialize program
 init();
